@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShopEase - Online Shopping</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #302052;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: #ffd166;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        /* Banner */
+        .banner {
+            background: #7046d8;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .banner h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .banner button {
+            padding: 12px 25px;
+            background: #ffd166;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        /* Categories */
+        .categories {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .categories button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background: #7046d8;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Products */
+        .container {
+            padding: 20px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(220px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .product h3 {
+            margin: 10px;
+        }
+
+        .price {
+            color: #7046d8;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .discount {
+            color: green;
+            margin: 8px;
+        }
+
+        .rating {
+            color: orange;
+            margin: 8px;
+        }
+
+        .product button {
+            background: #302052;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background: #7046d8;
+        }
+
+        /* Footer */
+        footer {
+            background: #302052;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .banner h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>ShopEase</h1>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#categories">Categories</a>
+            <a href="#cart">Cart (<span id="cart">0</span>)</a>
+        </div>
+    </nav>
+
+    <!-- Promotional Banner -->
+    <section class="banner">
+        <h2>Big Shopping Days!</h2>
+        <h1>Up to 50% OFF</h1>
+        <p>Discover amazing products at exciting prices.</p>
+        <button onclick="location.href='#products'">
+            Shop Now
+        </button>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <h2>Shop by Category</h2>
+
+        <button onclick="filterProducts('All')">All</button>
+        <button onclick="filterProducts('Fashion')">Fashion</button>
+        <button onclick="filterProducts('Electronics')">
+            Electronics
+        </button>
+        <button onclick="filterProducts('Home')">Home</button>
+    </section>
+
+    <!-- Product Section -->
+    <section class="container" id="products">
+
+        <h2>Featured Products</h2>
+
+        <div class="products">
+
+            <!-- Product 1 -->
+            <div class="product" data-category="Fashion">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"
+                     alt="Sneakers">
+
+                <h3>Classic Sneakers</h3>
+                <p>Comfortable everyday footwear.</p>
+                <p class="price">₹1499</p>
+                <p class="old-price">₹2499</p>
+                <p class="discount">40% OFF</p>
+                <p class="rating">★★★★★ 4.8</p>
+
+                <button onclick="addToCart()">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product" data-category="Electronics">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+                     alt="Headphones">
+
+                <h3>Wireless Headphones</h3>
+                <p>Enjoy clear and quality sound.</p>
+                <p class="price">₹1999</p>
+                <p class="old-price">₹2999</p>
+                <p class="discount">33% OFF</p>
+                <p class="rating">★★★★★ 4.6</p>
+
+                <button onclick="addToCart()">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product" data-category="Electronics">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"
+                     alt="Smart Watch">
+
+                <h3>Smart Watch</h3>
+                <p>Smart and stylish digital watch.</p>
+                <p class="price">₹2499</p>
+                <p class="old-price">₹3999</p>
+                <p class="discount">38% OFF</p>
+                <p class="rating">★★★★★ 4.7</p>
+
+                <button onclick="addToCart()">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product" data-category="Fashion">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400"
+                     alt="Handbag">
+
+                <h3>Elegant Handbag</h3>
+                <p>Beautiful handbag for daily use.</p>
+                <p class="price">₹1299</p>
+                <p class="old-price">₹1999</p>
+                <p class="discount">35% OFF</p>
+                <p class="rating">★★★★★ 4.5</p>
+
+                <button onclick="addToCart()">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <section class="container" id="cart">
+        <h2>Shopping Cart</h2>
+        <p style="text-align:center">
+            Total Items: <span id="total">0</span>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>ShopEase</h3>
+        <p>Your Shopping, Your Style.</p>
+        <p>© 2026 ShopEase. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let count = 0;
+
+        function addToCart() {
+            count++;
+
+            document.getElementById("cart").innerText = count;
+            document.getElementById("total").innerText = count;
+
+            alert("Product added to cart successfully!");
+        }
+
+        function filterProducts(category) {
+            let products =
+                document.querySelectorAll(".product");
+
+            products.forEach(function(product) {
+
+                if (category === "All" ||
+                    product.dataset.category === category) {
+
+                    product.style.display = "block";
+
+                } else {
+                    product.style.display = "none";
+                }
+
+            });
+        }
+    </script>
+
+</body>
+</html>
