@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CineWorld - Movie Website</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #101018;
+            color: white;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #191923;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: #ffcc00;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)
+            ),
+            url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200");
+
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .banner h2 {
+            font-size: 40px;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            font-size: 18px;
+        }
+
+        .banner button {
+            background: #ffcc00;
+            color: black;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* Search */
+        .search {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .search input {
+            width: 80%;
+            max-width: 450px;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        /* Movie Section */
+        .section {
+            padding: 30px;
+        }
+
+        .section h2 {
+            color: #ffcc00;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .movies {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        /* Movie Card */
+        .movie-card {
+            background: #20202c;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px #000;
+            transition: 0.3s;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .details {
+            padding: 15px;
+        }
+
+        .details h3 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .details p {
+            font-size: 14px;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .rating {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .review {
+            color: #b8b8c8;
+            font-style: italic;
+        }
+
+        .details button {
+            background: #ffcc00;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .details button:hover {
+            background: orange;
+        }
+
+        /* Footer */
+        footer {
+            background: #191923;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media(max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .banner h2 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>🎬 CineWorld</h1>
+
+        <div>
+            <a href="#">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <h2>Welcome to CineWorld</h2>
+
+        <p>Discover Movies, Explore Stories and Enjoy Cinema!</p>
+
+        <button onclick="location.href='#movies'">
+            Explore Movies
+        </button>
+    </section>
+
+    <!-- Search -->
+    <div class="search">
+        <input type="text"
+               id="searchInput"
+               placeholder="Search your favourite movie..."
+               onkeyup="searchMovies()">
+    </div>
+
+    <!-- Movies -->
+    <section class="section" id="movies">
+
+        <h2>Popular Movies</h2>
+
+        <div class="movies">
+
+            <!-- Movie 1 -->
+            <div class="movie-card">
+
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500"
+                     alt="Adventure Movie Poster">
+
+                <div class="details">
+
+                    <h3>Adventure World</h3>
+
+                    <p><b>Genre:</b> Adventure, Action</p>
+
+                    <p><b>Release Date:</b> 15 June 2026</p>
+
+                    <p><b>Cast:</b> Actor A, Actor B</p>
+
+                    <p><b>Synopsis:</b>
+                    A group of friends travels through
+                    mysterious places on an exciting adventure.
+                    </p>
+
+                    <p class="rating">⭐ 8.5 / 10</p>
+
+                    <p class="review">
+                    "An exciting and entertaining movie."
+                    </p>
+
+                    <button onclick="showReview('Adventure World')">
+                        View Details
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Movie 2 -->
+            <div class="movie-card">
+
+                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500"
+                     alt="Drama Movie Poster">
+
+                <div class="details">
+
+                    <h3>Love Story</h3>
+
+                    <p><b>Genre:</b> Romance, Drama</p>
+
+                    <p><b>Release Date:</b> 20 July 2026</p>
+
+                    <p><b>Cast:</b> Actor C, Actor D</p>
+
+                    <p><b>Synopsis:</b>
+                    A beautiful story about love,
+                    friendship and family relationships.
+                    </p>
+
+                    <p class="rating">⭐ 9.0 / 10</p>
+
+                    <p class="review">
+                    "A heart-touching romantic film."
+                    </p>
+
+                    <button onclick="showReview('Love Story')">
+                        View Details
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Movie 3 -->
+            <div class="movie-card">
+
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500"
+                     alt="Science Fiction Movie">
+
+                <div class="details">
+
+                    <h3>Space Mission</h3>
+
+                    <p><b>Genre:</b> Science Fiction</p>
+
+                    <p><b>Release Date:</b> 10 August 2026</p>
+
+                    <p><b>Cast:</b> Actor E, Actor F</p>
+
+                    <p><b>Synopsis:</b>
+                    Scientists travel into space
+                    to discover a new planet.
+                    </p>
+
+                    <p class="rating">⭐ 8.8 / 10</p>
+
+                    <p class="review">
+                    "Amazing visuals and great storytelling."
+                    </p>
+
+                    <button onclick="showReview('Space Mission')">
+                        View Details
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Movie 4 -->
+            <div class="movie-card">
+
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500"
+                     alt="Mystery Movie">
+
+                <div class="details">
+
+                    <h3>Mystery Night</h3>
+
+                    <p><b>Genre:</b> Thriller, Mystery</p>
+
+                    <p><b>Release Date:</b> 5 September 2026</p>
+
+                    <p><b>Cast:</b> Actor G, Actor H</p>
+
+                    <p><b>Synopsis:</b>
+                    A detective investigates a mysterious
+                    event and discovers hidden secrets.
+                    </p>
+
+                    <p class="rating">⭐ 8.2 / 10</p>
+
+                    <p class="review">
+                    "An interesting and suspenseful film."
+                    </p>
+
+                    <button onclick="showReview('Mystery Night')">
+                        View Details
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews">
+
+        <h2>Movie Reviews</h2>
+
+        <p style="text-align:center">
+            Explore movie ratings and critic opinions
+            before choosing your next movie!
+        </p>
+
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+
+        <h2>Contact CineWorld</h2>
+
+        <p style="text-align:center">
+            Email: cineworld@gmail.com
+        </p>
+
+        <p style="text-align:center">
+            Phone: +91 98765 43210
+        </p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🎬 CineWorld</h3>
+
+        <p>Your Favourite Movie Destination</p>
+
+        <p>© 2026 CineWorld. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+
+        function showReview(movie) {
+
+            alert("You selected " + movie +
+                  ". Thank you for exploring CineWorld!");
+
+        }
+
+        function searchMovies() {
+
+            let input = document
+                .getElementById("searchInput")
+                .value.toLowerCase();
+
+            let cards = document
+                .querySelectorAll(".movie-card");
+
+            cards.forEach(function(card) {
+
+                let name = card
+                    .querySelector("h3")
+                    .innerText.toLowerCase();
+
+                if (name.includes(input)) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
